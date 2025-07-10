@@ -7,20 +7,24 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Router, RouterModule } from '@angular/router';
 import { ExamenService } from '../../../services/examen.service';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { iExamen } from '../../../interfaces/examens.interface';
 
 @Component({
   selector: 'app-verExamen',
   templateUrl: './verExamen.component.html',
   styleUrls: ['./verExamen.component.css'],
   standalone: true,
-  imports: [FormsModule, RouterModule, MatTableModule ,MatFormFieldModule, MatInputModule, MatSortModule, MatPaginatorModule]
+  imports: [CommonModule,FormsModule, RouterModule, MatTableModule ,MatFormFieldModule, MatInputModule, MatSortModule, MatPaginatorModule]
 })
 export class VerExamenComponent implements OnInit {
-  /*        "id": 8,
+  /*    "id": 8,
         "name": "Ecografía Doppler Renal",
         "modality": "Ultrasonido",
         "description": "Examen que permite evaluar la anatomía renal y el flujo sanguíneo"*/
+  editarExamen : iExamen | null = null;
 
+  editId : number | null = null;
 
   displayedColumns: string[] = ['id', 'name', 'modality', 'description', 'Editar', 'Borrar'];
   dataSource!: MatTableDataSource<any>;
@@ -33,6 +37,8 @@ export class VerExamenComponent implements OnInit {
   constructor(private readonly examenService: ExamenService,
     private readonly router: Router
    ) { }
+
+
 
   ngOnInit() {
     this.getAllData();
@@ -47,7 +53,9 @@ export class VerExamenComponent implements OnInit {
         this.dataSource.sort = this.sort;
       },
       error: (err) => {console.error(err)},
-      complete: () => {}
+      complete: () => {
+        this.cancellEdit();
+      }
   })
 
   
@@ -61,21 +69,30 @@ export class VerExamenComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  isEditing(row: any){
+    return this.editId === row.id;
+  }
+
+  editExamen(row: any){
+    if(this.editId !== null){
+      this.cancellEdit();
+    }
+    this.editId = row.id;
+    this.editarExamen = {...row};
+  }
+
+  cancellEdit(){
+      this.editId = null;
+      this.editarExamen = null;
+
+  }
+
+
   
 
-  editExamenes(row: any){
-    const nuevoNombre = prompt('Nombre examen:', row.name);
-    const nuevaModalidad = prompt('Modalidad:', row.modality);
-    const nuevaDescripcion = prompt('Descripción', row.description);
-
-    if( nuevoNombre !== null && nuevaModalidad !==null && nuevaDescripcion !== null){
-      const examenActualizado = {
-        name : nuevoNombre,
-        modality: nuevaModalidad,
-        description : nuevaDescripcion
-      };
-
-      this.examenService.putExamenes(row.id, examenActualizado).subscribe({
+  saveExamenes(row: any){
+    if(this.editarExamen){
+        this.examenService.putExamenes(row.id, this.editarExamen).subscribe({
         next: () => {
           alert('Examen actualizado correctamente');
           this.getAllData();
@@ -85,7 +102,12 @@ export class VerExamenComponent implements OnInit {
           console.error('Error al actualizar examen')
         }
       });
+    
+
     }
+    
+
+
 
   }
 
