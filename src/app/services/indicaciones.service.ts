@@ -28,4 +28,5 @@ deleteIndicaciones(id: number){
   return this.http.delete<any>(url)
 }
 
+
 }
