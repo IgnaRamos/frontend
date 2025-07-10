@@ -13,12 +13,7 @@
       <div>
         <mat-form-field>
           <mat-label>Filtro</mat-label>
-          <input
-            matInput
-            (keyup)="applyFilter($event)"
-            placeholder=""
-            #input
-          />
+          <input matInput (keyup)="applyFilter($event)" placeholder="" #input />
         </mat-form-field>
 
         <div class="mat-elevation-z8">
@@ -29,20 +24,49 @@
             </ng-container>
 
             <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Examen</th>
-              <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Nombre Examen
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <input
+                  [(ngModel)]="editarExamen!.name"
+                  *ngIf="isEditing(row)"
+                  type="text"
+                />
+                <div *ngIf="!isEditing(row)">
+                  {{ row.name }}
+                </div>
+              </td>
             </ng-container>
 
             <ng-container matColumnDef="modality">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Modalidad</th>
-              <td mat-cell *matCellDef="let row">{{ row.modality }}</td>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Modalidad
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <input
+                  [(ngModel)]="editarExamen!.modality"
+                  *ngIf="isEditing(row)"
+                  type="text"
+                />
+                <div *ngIf="!isEditing(row)">
+                  {{ row.modality }}
+                </div>
+              </td>
             </ng-container>
 
             <ng-container matColumnDef="description">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 Descripción
               </th>
-              <td mat-cell *matCellDef="let row">{{ row.description }}</td>
+              <td mat-cell *matCellDef="let row">
+                <input
+                  [(ngModel)]="editarExamen!.modality"
+                  *ngIf="isEditing(row)"
+                  type="text"
+                />
+                <div *ngIf="!isEditing(row)">{{ row.description }}</div>
+              </td>
             </ng-container>
 
             <ng-container matColumnDef="Editar">
@@ -50,7 +74,12 @@
                 Actualizar
               </th>
               <td mat-cell *matCellDef="let row">
-                <button (click)="editExamenes(row.id)">Editar</button>
+                <button *ngIf="!isEditing(row)" (click)="editExamen(row)">
+                  Editar
+                </button>
+                <button *ngIf="isEditing(row)" (click)="saveExamenes(row)">
+                  Guardar
+                </button>
               </td></ng-container
             >
 
@@ -58,7 +87,14 @@
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 Eliminar
               </th>
-              <td mat-cell *matCellDef="let row"><button (click)="delExamenes(row.id)"> Eliminar</button></td>
+              <td mat-cell *matCellDef="let row">
+                <button *ngIf="!isEditing(row)" (click)="delExamenes(row.id)">
+                  Eliminar
+                </button>
+                <button *ngIf="isEditing(row)" (click)="cancellEdit()">
+                  Cancelarr
+                </button>
+              </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
