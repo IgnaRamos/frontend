@@ -1,0 +1,25 @@
+<div class="contenedor">
+  <header class="header">
+    <h1>Gestión Hospitalaria</h1>
+  </header>
+  <section class="section">
+    
+    <div class="inicio">
+      <div class="contenedor_bienvenido">
+        <h2 class="texto_inicio"> 
+          <span class="material-symbols-outlined">medical_services</span>
+          Bievenido/a!
+        </h2>
+      </div>
+      <button class="loginButton" [routerLink]="['/admin']" routerLinkActive="router-link-active" >
+        <span class="material-symbols-outlined"> admin_meds </span>
+        Administrador
+      </button>
+      <button class="loginButton" [routerLink]="['/scheduler']" routerLinkActive="router-link-active">
+        <span class="material-symbols-outlined"> edit_calendar </span>
+        Agendador
+      </button>
+    </div>
+  </section>
+  <footer class="footer">Desarrollado por Ignacio Ramos.</footer>
+</div>

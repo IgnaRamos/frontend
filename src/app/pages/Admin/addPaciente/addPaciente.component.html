@@ -1,0 +1,52 @@
+<body>
+  <div class="contenedor">
+    <header class="header">
+      <h1>Gestión Hospitalaria</h1>
+    </header>
+    <section class="section">
+      <div class="inicio">
+        <div>
+          <h1>Agregar Paciente</h1>
+          <p>
+            <span class="material-symbols-outlined"> personal_injury </span>
+          </p>
+        </div>
+
+        <form (ngSubmit)="crearPaciente()">
+
+        <div class="login_form">
+          <div >
+            <label for="First_name"> Nombre </label>
+            <input type="text" [(ngModel)]="newPaciente.first_name" id="first_name" name="first_name" placeholder="Nombre" required  />
+          </div>
+          <div >
+            <label for="Last_name"> Apellidos </label>
+            <input type="text" [(ngModel)]="newPaciente.last_name" id="last_name" name="last_name" placeholder="Apellido" required  />
+          </div>
+          <div >
+            <label for="dob"> Fecha de nacimiento </label>
+            <input type="date" [(ngModel)]="newPaciente.dob" id="dob" name="dob" placeholder="Fecha nacimiento" required  />
+          </div>
+          <div >
+            <label for="phone"> Teléfono </label>
+            <input type="number" [(ngModel)]="newPaciente.phone" id="phone" name="phone" placeholder="Teléfono" required  />
+          </div>
+          <div >
+            <label for="email"> Correo Electrónico </label>
+            <input type="email" [(ngModel)]="newPaciente.email" id="email" name="email" placeholder="Correo electronico" required  />
+          </div>
+          <div >
+            <label for="rut"> Rut </label>
+            <input type="number" [(ngModel)]="newPaciente.rut" id="rut" name="rut" placeholder="Rut" required />
+          </div>
+        </div>
+
+        <button type="submit">
+          Guardar
+        </button>
+        </form>
+      </div>
+    </section>
+    <footer class="footer">Desarrollado por Ignacio Ramos.</footer>
+  </div>
+</body>

@@ -1,0 +1,59 @@
+<body>
+  <div class="contenedor">
+    <header class="header">
+      <h1>Gestión Hospitalaria</h1>
+    </header>
+    <section class="section">
+      <div class="inicio">
+        <div>
+          <h1>Agregar Examen</h1>
+          <p>
+            <span class="material-symbols-outlined"> radiology </span>
+          </p>
+        </div>
+
+        <form (ngSubmit)="crearExamen()">
+          <div class="login_form">
+            <div class>
+              <label for="name"> Nombre del Exámen </label>
+              <input
+                type="text"
+                [(ngModel)]="newExamen.name"
+                id="name"
+                name="name"
+                placeholder="Nombre Examen"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="modality"> Modalidad</label>
+              <input
+                type="text"
+                [(ngModel)]="newExamen.modality"
+                id="modality"
+                name="modality"
+                placeholder="Modalidad"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="description"> Descripción</label>
+              <input
+                type="text"
+                [(ngModel)]="newExamen.description"
+                id="description"
+                name="description"
+                placeholder="Descripción"
+              />
+            </div>
+          </div>
+
+          <button type="submit">Guardar</button>
+        </form>
+      </div>
+    </section>
+    <footer class="footer">Desarrollado por Ignacio Ramos.</footer>
+  </div>
+</body>

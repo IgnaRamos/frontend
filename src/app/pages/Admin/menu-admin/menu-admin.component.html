@@ -1,0 +1,50 @@
+<div class="contenedor">
+  <header class="header">
+    <h1>Gestión Hospitalaria</h1>
+  </header>
+  <section class="section">
+    <div class="inicio">
+      <div class="contenedor_bienvenido">
+        <h2 class="texto_inicio">
+          <span class="material-symbols-outlined">admin_meds</span>
+          Seleccione una opción
+        </h2>
+      </div>
+      <div class="boton">
+        <button
+          class="loginButton"
+          [routerLink]="['/menuPaciente']"
+          routerLinkActive="router-link-active"
+        >
+          <span class="material-symbols-outlined"> personal_injury </span>
+          Paciente
+        </button>
+        <button
+          class="loginButton"
+          [routerLink]="['/menuExamen']"
+          routerLinkActive="router-link-active"
+        >
+          <span class="material-symbols-outlined"> radiology </span>
+          Exámenes
+        </button>
+        <button
+          class="loginButton"
+          [routerLink]="['/menuIndicacion']"
+          routerLinkActive="router-link-active"
+        >
+          <span class="material-symbols-outlined"> assignment </span>
+          Indicaciones
+        </button>
+        <button
+          class="loginButton"
+          [routerLink]="['/menuUsuarios']"
+          routerLinkActive="router-link-active"
+        >
+          <span class="material-symbols-outlined"> manage_accounts </span>
+          Usuarios
+        </button>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">Desarrollado por Ignacio Ramos.</footer>
+</div>

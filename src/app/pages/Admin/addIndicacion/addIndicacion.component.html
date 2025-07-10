@@ -1,0 +1,36 @@
+<body>
+  <div class="contenedor">
+    <header class="header">
+      <h1>Gestión Hospitalaria</h1>
+    </header>
+    <section class="section">
+      <div class="inicio">
+        <div>
+          <h1>Agregar Indicación</h1>
+          <p>
+            <span class="material-symbols-outlined"> assignment </span>
+          </p>
+        </div>
+
+        <form (ngSubmit)="crearIndicacion()">
+          <div class="login_form">
+            <div class>
+              <label for="content"> Indicación </label>
+              <input
+                type="text"
+                [(ngModel)]="newIndicacion.content"
+                id="content"
+                name="content"
+                placeholder="Indicación"
+                required
+              />
+            </div>
+          </div>
+
+          <button type="submit">Guardar</button>
+        </form>
+      </div>
+    </section>
+    <footer class="footer">Desarrollado por Ignacio Ramos.</footer>
+  </div>
+</body>

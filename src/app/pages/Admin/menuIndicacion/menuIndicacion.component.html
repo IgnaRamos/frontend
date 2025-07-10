@@ -1,0 +1,30 @@
+<div class="contenedor">
+  <header class="header">
+    <h1>Gestión Hospitalaria</h1>
+  </header>
+  <section class="section">
+    <div class="inicio">
+      <div class="contenedor_bienvenido">
+        <h2 class="texto_inicio">
+          <span class="material-symbols-outlined"> assignment </span>
+          Seleccione una opción
+        </h2>
+      </div>
+      <div class="boton">
+        <button class="loginButton" [routerLink]="['/addIndicacion']" routerLinkActive="router-link-active">
+          <span class="material-symbols-outlined">add_box</span>
+          Agregar Indicacion
+        </button>
+        <button class="loginButton" [routerLink]="['/verIndicacion']" routerLinkActive="router-link-active">
+          <span class="material-symbols-outlined">search</span>
+          Ver indicaciones
+        </button>
+        <button class="loginButton">
+          <span class="material-symbols-outlined">automation</span>
+          Relacionar indicaciones
+        </button>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">Desarrollado por Ignacio Ramos.</footer>
+</div>

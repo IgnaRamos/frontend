@@ -1,0 +1,33 @@
+<body>
+  <div class="contenedor">
+    <header class="header">
+      <h1>Gestión Hospitalaria</h1>
+    </header>
+    <section class="section">
+      <div class="inicio">
+        <div>
+          <h1>INICIO DE SESIÓN</h1>
+          <p>Rol Administrador</p>
+          <p>
+            <span class="material-symbols-outlined"> admin_meds </span>
+          </p>
+        </div>
+
+        <div class="login_form">
+          <div class>
+            <label for="user"> Nombre de usuario </label>
+            <input type="text" [(ngModel)]="inputUser" id="user" />
+          </div>
+
+          <div>
+            <label for="password"> Contraseña</label>
+            <input type="password" [(ngModel)]="inputPassword" id="password" />
+          </div>
+        </div>
+
+        <button [disabled]="!enabledButton" (click)="getLogin()">Ingresar</button>
+      </div>
+    </section>
+    <footer class="footer">Desarrollado por Ignacio Ramos.</footer>
+  </div>
+</body>
