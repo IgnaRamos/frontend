@@ -20,7 +20,7 @@ postIndicaciones(data:any){
 
 putIndicaciones(id: number, data:any){
   const url =`https://agenda-express-api-production.up.railway.app/api/indications/${id}`
-  return this.http.get<any>(url);
+  return this.http.put<any>(url, data);
 }
 
 deleteIndicaciones(id: number){
