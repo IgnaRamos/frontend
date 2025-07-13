@@ -29,7 +29,7 @@ export class VerPacienteComponent implements OnInit{
 
   editarPaciente: iPaciente | null = null;
   
-  editId : number | null = null;
+  editRut : string | null = null;
 
 
   displayedColumns: string[] = ['id',  'rut', 'first_name', 'last_name', 'dob', 'phone', 'email', 'Editar', 'Borrar'];
@@ -77,19 +77,19 @@ export class VerPacienteComponent implements OnInit{
   }
 
   isEditing(row: any){
-    return this.editId === row.id;
+    return this.editRut === row.rut;
   }
 
   editPaciente(row: any){
-    if(this.editId !== null){
+    if(this.editRut !== null){
       this.cancellEdit();
     }
-    this.editId = row.id;
+    this.editRut = row.id;
     this.editarPaciente = {...row};
   }
 
   cancellEdit(){
-    this.editId = null;
+    this.editRut = null;
     this.editarPaciente = null;
 
   }
