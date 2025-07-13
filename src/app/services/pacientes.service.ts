@@ -19,8 +19,8 @@ postPacientes(data:any): Observable<any>{
   return this.http.post<any>(url, data);
 }
 
-putPacientes(id: number, data:any){
-  const url =`https://agenda-express-api-production.up.railway.app/api/patients/${id}`
+putPacientes(rut: number, data:any){
+  const url =`https://agenda-express-api-production.up.railway.app/api/patients/${rut}`
   return this.http.put<any>(url, data);
 }
 
