@@ -84,7 +84,7 @@ export class VerPacienteComponent implements OnInit{
     if(this.editRut !== null){
       this.cancellEdit();
     }
-    this.editRut = row.id;
+    this.editRut = row.rut;
     this.editarPaciente = {...row};
   }
 
