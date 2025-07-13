@@ -52,7 +52,9 @@ export class VerIndicacionComponent implements OnInit {
         this.dataSource.sort = this.sort;
       },
       error: (err) => {console.error(err)},
-      complete: () => {}
+      complete: () => {
+        this.cancellEdit();
+      }
   })
 
   
