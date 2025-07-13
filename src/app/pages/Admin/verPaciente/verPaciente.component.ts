@@ -94,7 +94,7 @@ export class VerPacienteComponent implements OnInit{
 
   }
 
-  savePaciente(rut: number){
+  savePaciente(rut: string){
     if(this.editarPaciente){
       this.pacientesService.putPacientes(rut, this.editarPaciente).subscribe({
         next: () => {
