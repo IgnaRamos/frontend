@@ -94,9 +94,9 @@ export class VerPacienteComponent implements OnInit{
 
   }
 
-  savePaciente(row: any){
+  savePaciente(rut: number){
     if(this.editarPaciente){
-      this.pacientesService.putPacientes(row.id, this.editarPaciente).subscribe({
+      this.pacientesService.putPacientes(rut, this.editarPaciente).subscribe({
         next: () => {
           alert('Paciente actualizado correctamente');
           this.getAllData();
