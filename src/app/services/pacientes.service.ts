@@ -20,8 +20,8 @@ postPacientes(data:any): Observable<any>{
 }
 
 putPacientes(id: number, data:any){
-  const url ='https://agenda-express-api-production.up.railway.app/api/patients'
-  return this.http.get<any>(url);
+  const url =`https://agenda-express-api-production.up.railway.app/api/patients/${id}`
+  return this.http.put<any>(url, data);
 }
 
 deletePacientes(rut: number){
