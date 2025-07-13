@@ -32,7 +32,8 @@ export class LoginAdminComponent implements OnInit {
     const dataLogin = { username: this.inputUser, password: this.inputPassword}
     this.loginService.login(dataLogin).subscribe({
       next: () => {
-        alert('Bienvenido')
+        alert('Bienvenido');
+        this.router.navigate(['/menuAdmin']);
       },
       error: (err) => {
         alert('Error al iniciar sesíon')
