@@ -31,10 +31,11 @@ export class LoginAdminComponent implements OnInit {
   getLogin() {
     const dataLogin = { username: this.inputUser, password: this.inputPassword}
     this.loginService.login(dataLogin).subscribe({
-      next: () => {},
-      error: (err) => {console.error(err)},
-      complete: () => {
-        this.router.navigate(['/menuAdmin'])
+      next: () => {
+        alert('Bienvenido')
+      },
+      error: (err) => {
+        alert('Error al iniciar sesíon')
       }
     })
   }
