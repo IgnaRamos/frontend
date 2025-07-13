@@ -13,17 +13,11 @@
       <div>
         <mat-form-field>
           <mat-label>Filtro</mat-label>
-          <input
-            matInput
-            (keyup)="applyFilter($event)"
-            placeholder=""
-            #input
-          />
+          <input matInput (keyup)="applyFilter($event)" placeholder="" #input />
         </mat-form-field>
 
         <div class="mat-elevation-z8">
           <table mat-table [dataSource]="dataSource" matSort>
-
             <ng-container matColumnDef="id">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
               <td mat-cell *matCellDef="let row">{{ row.id }}</td>
@@ -36,14 +30,32 @@
 
             <ng-container matColumnDef="first_name">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
-              <td mat-cell *matCellDef="let row">{{ row.first_name }}</td>
+              <td mat-cell *matCellDef="let row">
+                <input
+                  [(ngModel)]="editarPaciente!.first_name"
+                  *ngIf="isEditing(row)"
+                  type="text"
+                />
+                <div *ngIf="!isEditing(row)">
+                  {{ row.first_name }}
+                </div>
+              </td>
             </ng-container>
 
             <ng-container matColumnDef="last_name">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 Apellido
               </th>
-              <td mat-cell *matCellDef="let row">{{ row.last_name }}</td>
+              <td mat-cell *matCellDef="let row">
+                <input
+                  [(ngModel)]="editarPaciente!.last_name"
+                  *ngIf="isEditing(row)"
+                  type="text"
+                />
+                <div *ngIf="!isEditing(row)">
+                  {{ row.last_name }}
+                </div>
+              </td>
             </ng-container>
 
             <ng-container matColumnDef="dob">
@@ -57,14 +69,32 @@
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 Teléfono
               </th>
-              <td mat-cell *matCellDef="let row">{{ row.phone }}</td>
+              <td mat-cell *matCellDef="let row">
+                <input
+                  [(ngModel)]="editarPaciente!.phone"
+                  *ngIf="isEditing(row)"
+                  type="text"
+                />
+                <div *ngIf="!isEditing(row)">
+                  {{ row.phone }}
+                </div>
+              </td>
             </ng-container>
 
             <ng-container matColumnDef="email">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 Correo Electronico
               </th>
-              <td mat-cell *matCellDef="let row">{{ row.email }}</td>
+              <td mat-cell *matCellDef="let row">
+                <input
+                  [(ngModel)]="editarPaciente!.email"
+                  *ngIf="isEditing(row)"
+                  type="text"
+                />
+                <div *ngIf="!isEditing(row)">
+                  {{ row.email }}
+                </div>
+              </td>
             </ng-container>
 
             <ng-container matColumnDef="Editar">
@@ -72,7 +102,12 @@
                 Actualizar
               </th>
               <td mat-cell *matCellDef="let row">
-                <button>Editar</button>
+                <button *ngIf="!isEditing(row)" (click)="editPaciente(row)">
+                  Editar
+                </button>
+                <button *ngIf="isEditing(row)" (click)="savePaciente(row)">
+                  Guardar
+                </button>
               </td></ng-container
             >
 
@@ -80,7 +115,9 @@
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 Eliminar
               </th>
-              <td mat-cell *matCellDef="let row"><button (click)="delPacientes(row.rut)"> Eliminar</button></td>
+              <td mat-cell *matCellDef="let row">
+                <button (click)="delPacientes(row.rut)">Eliminar</button>
+              </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
