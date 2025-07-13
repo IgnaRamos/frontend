@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "postbuild": "copy src\\_redirects dist\\proyecto_titulacion\\browser\\",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
