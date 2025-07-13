@@ -30,10 +30,12 @@ export class LoginAgendadorComponent implements OnInit {
   getLogin(){
     const dataLogin = {username: this.inputUser, password: this.inputPassword}
     this.loginService.login(dataLogin).subscribe({
-      next: () => {},
-      error: (err) => {console.error(err)},
-      complete: () => {
-        this.router.navigate(['/menuScheduler'])
+      next: () => {
+        alert('Bienvenido');
+        this.router.navigate(['menuScheduler']);
+      },
+      error: (err) => {
+        alert('Error al iniciar sesión')
       }
     })
   }
