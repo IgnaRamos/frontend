@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-menu_Agendador',
@@ -12,11 +12,20 @@ import { RouterModule } from '@angular/router';
   
 })
 export class Menu_AgendadorComponent implements OnInit {
+
+
+  constructor( private router: Router) { }
   inputRut : string = '';
 
-  constructor() { }
+  irPacienteScheduler(){
+    this.router.navigate(['/pacienteScheduler', this.inputRut])
+  }
+
+
+
 
   ngOnInit() {
+    
   }
 
 }
