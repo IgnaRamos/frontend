@@ -1,0 +1,36 @@
+<body>
+  <div class="contenedor">
+    <header class="header">
+      <h1>Gestión Hospitalaria</h1>
+    </header>
+    <section class="section">
+      <div class="inicio">
+        <div>
+          <h1>Agendar cita</h1>
+          <p>
+            <span class="material-symbols-outlined"> edit_calendar </span>
+          </p>
+        </div>
+
+        <form (ngSubmit)="crearCita()">
+
+        <div class="login_form">
+          <div >
+            <label for="Exam_id"> Código exámen </label>
+            <input type="text" [(ngModel)]="newCita.exam_id" id="exam_id" name="exam_id" placeholder="Código exámen" required  />
+          </div>
+          <div >
+            <label for="Date"> Fecha citación </label>
+            <input type="date" [(ngModel)]="newCita.date" id="date" name="date" placeholder="Fecha" required  />
+          </div>
+        </div>
+
+        <button type="submit">
+          Guardar
+        </button>
+        </form>
+      </div>
+    </section>
+    <footer class="footer">Desarrollado por Ignacio Ramos.</footer>
+  </div>
+</body>
