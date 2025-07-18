@@ -17,6 +17,8 @@ import { VerPacienteComponent } from './pages/Admin/verPaciente/verPaciente.comp
 import { VerExamenComponent } from './pages/Admin/verExamen/verExamen.component';
 import { VerIndicacionComponent } from './pages/Admin/verIndicacion/verIndicacion.component';
 import { VerUsuariosComponent } from './pages/Admin/verUsuarios/verUsuarios.component';
+import { AgendarComponent } from './pages/Scheduler/agendar/agendar.component';
+import { VerPendientesComponent } from './pages/Scheduler/verPendientes/verPendientes.component';
 
 export const routes: Routes = [
     {path: '', component:MainComponent},
@@ -28,7 +30,6 @@ export const routes: Routes = [
     {path: 'menuIndicacion', component:MenuIndicacionComponent},
     {path: 'menuPaciente', component:MenuPacienteComponent},
     {path: 'menuUsuarios', component:MenuUsuariosComponent},
-    {path: 'pacienteScheduler', component:PacienteComponent},
     {path: 'addExamen', component:AddExamComponent},
     {path: 'addIndicacion', component:AddIndicacionComponent},
     {path: 'addPaciente', component:AddPacienteComponent},
@@ -37,4 +38,7 @@ export const routes: Routes = [
     {path: 'verExamen', component:VerExamenComponent},
     {path: 'verIndicacion', component:VerIndicacionComponent},
     {path: 'verUsuario', component:VerUsuariosComponent},
+    {path: 'pacienteScheduler/:rut', component:PacienteComponent},
+    {path: 'agendarCita/:rut', component:AgendarComponent},
+    {path: 'verPendientes/:rut', component:VerPendientesComponent}
 ];
